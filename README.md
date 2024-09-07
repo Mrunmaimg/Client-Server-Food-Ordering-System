@@ -12,6 +12,13 @@ The server handles requests, processes orders, stores feedback, and sends approp
 - **Feedback**: The client can send feedback to the server, which is stored in a file.
 - **Exit Option**: The client can exit the system, and the total bill will be displayed before termination.
 
+## TCP/IP Socket Communication
+This system leverages **TCP/IP sockets** to establish a reliable connection between the client and server. Here's how the TCP/IP communication works:
+- **Socket Creation**: Both the client and server create a socket using the `socket()` function, specifying `SOCK_STREAM` to use the TCP protocol.
+- **Server Binding and Listening**: The server binds to a specific IP address and port (in this case, `127.0.0.1:8080`) using `bind()` and listens for incoming client connections with `listen()`.
+- **Client-Server Communication**: Once a client connects using the `connect()` function, the server accepts the connection using `accept()`. Data is exchanged between the client and server using `send()` and `recv()`, ensuring reliable message delivery due to TCP’s nature.
+- **Multiple Requests**: The server can handle multiple client requests, such as ordering items, providing feedback, and exiting, using the same established TCP connection.
+
 ## Prerequisites
 To run this project, you need:
 - A Unix-based system (Linux).
@@ -21,9 +28,11 @@ To run this project, you need:
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/repository-name.git
+git clone https://github.com/Mrunmaimg/Client-Server-Food-Ordering-System.git
+cd Client-Server-Food-Ordering-System
 cd restaurant management system
 ```
+
 
 ### 2. Compile the server and client
 
@@ -86,3 +95,4 @@ File Appended
 - Ensure that both the server and client are running on the same machine or network. For network-based setups, replace the IP address in `client.c` with the server’s IP address.
 - Feedback and order information are stored in `Feedback_data.txt` and `Order_data.txt`, respectively, on the server side.
 
+--- 
